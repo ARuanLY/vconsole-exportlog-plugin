@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vconsole-exportlog-plugin</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>vConsole -> ExportsLog</h1>
+    </div>
+    <script type="module">
+      import VConsole from 'vconsole'
+      import VConsoleExportLogsPlugin from '/src/index.ts'
+
+      // init vConsole
+      const vConsole = new VConsole()
+      // add export log plugin
+      const plugin = new VConsoleExportLogsPlugin(vConsole)
+    </script>
+  </body>
+</html>

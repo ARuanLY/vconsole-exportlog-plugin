@@ -1,0 +1,49 @@
+{
+  "name": "vconsole-exportlog-plugin",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "A vConsole plugin to copy logs and export log file.",
+  "main": "dist/vconsole-exportlog-plugin.min.js",
+  "module": "dist/vconsole-exportlog-plugin.es.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/vconsole-exportlog-plugin.es.js",
+      "require": "./dist/vconsole-exportlog-plugin.min.js",
+      "default": "./dist/vconsole-exportlog-plugin.min.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && npm run build:types",
+    "preview": "vite preview",
+    "build:types": "tsc -p tsconfig.types.json"
+  },
+  "keywords": [
+    "vconsole",
+    "plugin",
+    "export",
+    "log"
+  ],
+  "author": "ARuanLY <3205647203@qq.com>",
+  "homepage": "https://github.com/ARuanLY/vconsole-exportlog-plugin",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/json-stringify-safe": "^5.0.3",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
+    "copy-to-clipboard": "^3.3.1",
+    "esbuild": "^0.28.0",
+    "json-stringify-safe": "^5.0.1",
+    "typescript": "^6.0.3",
+    "vconsole": "^3.15.1",
+    "vite": "^8.0.14"
+  },
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  }
+}
