@@ -1,5 +1,6 @@
-import { forwardRef, useImperativeHandle, useState } from 'react'
-import type { LogType } from '../types/vconsole'
+import { useEffect, useState } from 'react'
+import { buildLogTextForTypes } from '../util/log'
+import type { LogItem, LogType } from '../types/vconsole'
 
 const LOG_TYPE_OPTIONS: Array<{ value: LogType; label: string }> = [
   { value: 'log', label: 'Log' },
@@ -8,33 +9,24 @@ const LOG_TYPE_OPTIONS: Array<{ value: LogType; label: string }> = [
   { value: 'error', label: 'Error' },
 ]
 
-export const ExportLogPage = forwardRef<
-  { updateSelectedTypesLogText: () => void },
-  {
-    getSelectedTypesLogText: () => string
-    onTypesChange: (types: LogType[]) => void
-  }
->(({ getSelectedTypesLogText, onTypesChange }, ref) => {
+export const ExportLogPage = ({
+  logList,
+  onSelectedTypesLogContentChange,
+}: {
+  logList: LogItem[]
+  onSelectedTypesLogContentChange: (content: string) => void
+}) => {
   const [selectedTypes, setSelectedTypes] = useState<LogType[]>([
     'log',
     'info',
     'warn',
     'error',
   ])
-  const [displayText, setDisplayText] = useState<string>('')
   const isAllSelected = selectedTypes.length === LOG_TYPE_OPTIONS.length
-  const updateSelectedTypesLogText = () => {
-    const logText = getSelectedTypesLogText()
-    setDisplayText(logText)
-  }
-
-  useImperativeHandle(ref, () => ({
-    updateSelectedTypesLogText,
-  }))
+  const logText = buildLogTextForTypes(logList, selectedTypes)
 
   const handleTypesChange = (types: LogType[]) => {
-    onTypesChange(types)
-    updateSelectedTypesLogText()
+    setSelectedTypes(types)
   }
 
   const toggleAll = (checked: boolean) => {
@@ -55,6 +47,10 @@ export const ExportLogPage = forwardRef<
       return selected
     })
   }
+
+  useEffect(() => {
+    onSelectedTypesLogContentChange(logText)
+  }, [logText])
 
   return (
     <div style={{ padding: '10px', fontSize: '13px', lineHeight: 1.5 }}>
@@ -110,11 +106,11 @@ export const ExportLogPage = forwardRef<
             wordBreak: 'break-word',
           }}
         >
-          {displayText.length > 0
-            ? displayText
+          {logText.length > 0
+            ? logText
             : 'No logs available for current selection.'}
         </div>
       </div>
     </div>
   )
-})
+}
