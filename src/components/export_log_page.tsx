@@ -102,10 +102,9 @@ export const ExportLogPage = forwardRef<
           style={{
             maxHeight: '180px',
             overflowY: 'auto',
-            border: '1px solid #ddd',
+            border: '1px solid',
             borderRadius: '4px',
             padding: '8px',
-            backgroundColor: '#fafafa',
             fontFamily: 'Menlo, Monaco, Consolas, monospace',
             whiteSpace: 'pre-wrap',
             wordBreak: 'break-word',
