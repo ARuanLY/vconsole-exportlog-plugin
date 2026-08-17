@@ -1,9 +1,6 @@
 {
   "name": "vconsole-exportlog-plugin",
-  "version": "0.1.0",
-  "publishConfig": {
-    "access": "public"
-  },
+  "version": "0.2.0",
   "description": "A vConsole plugin to copy logs and export log file.",
   "main": "dist/vconsole-exportlog-plugin.min.js",
   "module": "dist/vconsole-exportlog-plugin.es.js",
@@ -28,6 +25,10 @@
     "export",
     "log"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ARuanLY/vconsole-exportlog-plugin.git"
+  },
   "author": "ARuanLY <3205647203@qq.com>",
   "homepage": "https://github.com/ARuanLY/vconsole-exportlog-plugin",
   "license": "MIT",
