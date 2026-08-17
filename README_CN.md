@@ -1,7 +1,6 @@
 [English](./README.md) | 简体中文
 
-vconsole-exportlog-plugin
-===
+# vconsole-exportlog-plugin
 
 一个用于 [vConsole](https://github.com/Tencent/vConsole) 的插件，支持复制日志以及将日志导出为文件。
 
@@ -34,7 +33,7 @@ new VConsoleExportLogsPlugin(vConsole)
 ## 截图
 
 > 复制日志并导出日志文件
-![插件截图](screenshots/use_plugin.png)
+> ![插件截图](./screenshots/use_plugin.png)
 
 ## 致谢
 

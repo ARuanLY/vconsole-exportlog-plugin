@@ -1,7 +1,6 @@
 English | [简体中文](./README_CN.md)
 
-vconsole-exportlog-plugin
-===
+# vconsole-exportlog-plugin
 
 A [vConsole](https://github.com/Tencent/vConsole) plugin for copying logs and exporting logs to a file.
 
@@ -34,7 +33,7 @@ new VConsoleExportLogsPlugin(vConsole)
 ## Screenshot
 
 > Copy logs and export logs to a file
-![Plugin screenshot](screenshots/use_plugin.png)
+> ![Plugin screenshot](./screenshots/use_plugin.png)
 
 ## Acknowledgements
 

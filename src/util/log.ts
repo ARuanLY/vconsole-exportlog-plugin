@@ -27,7 +27,7 @@ export function buildLogTextForTypes(
     if (!filterTypes.includes(type)) {
       return
     }
-    const typeText = `[${type}]` + ' '.repeat(7 - type.length)
+    const typeText = formatTypeText(type)
     const timestamp = formatTimestampToHMSMs(date)
     let rowLog = `${typeText} ${timestamp} `
 
@@ -42,4 +42,23 @@ export function buildLogTextForTypes(
   })
 
   return content
+}
+
+/**
+ * Format log type text with padding
+ * @param type log type
+ * @returns formatted log type text
+ * @example
+ * formatTypeText('log') // returns '[log  ]'
+ * @example
+ * formatTypeText('info') // returns '[info ]'
+ * @example
+ * formatTypeText('warn') // returns '[warn ]'
+ * @example
+ * formatTypeText('error') // returns '[error]'
+ */
+function formatTypeText(type: LogType): string {
+  const TYPE_TEXT_LENGTH = 5
+  const paddedType = type.padEnd(TYPE_TEXT_LENGTH, ' ')
+  return `[${paddedType}]`
 }

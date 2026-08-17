@@ -6,8 +6,9 @@
     <title>vconsole-exportlog-plugin</title>
   </head>
   <body>
-    <div id="app">
-      <h1>vConsole -> ExportsLog</h1>
+    <div id="app" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <h1 style="font-size: 25px;">vConsole -> ExportsLog</h1>
+      <button id="consoleButton">Click to console</button>
     </div>
     <script type="module">
       import VConsole from 'vconsole'
@@ -17,6 +18,16 @@
       const vConsole = new VConsole()
       // add export log plugin
       const plugin = new VConsoleExportLogsPlugin(vConsole)
+      // add click event to button
+      const button = document.getElementById('consoleButton')
+      button.addEventListener('click', () => {
+        console.log('This is a log message')
+        console.info('This is an info message')
+        console.warn('This is a warning message')
+        console.error('This is an error message')
+        console.log('This is a log message with a long text. '.repeat(20))
+        console.log('This is an object message: ', { a: 1, b: 2, c: { d: 3 } })
+      })
     </script>
   </body>
 </html>
