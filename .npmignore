@@ -1,0 +1,18 @@
+# Source and dev files
+src/
+screenshots/
+.github/
+.vite/
+node_modules/
+
+# Config and build metadata
+vite.config.mjs
+tsconfig.json
+tsconfig.types.json
+index.html
+
+# Git and environment files
+.git/
+.gitignore
+.npmrc
+*.log

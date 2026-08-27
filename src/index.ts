@@ -1,15 +1,18 @@
 import VConsole from 'vconsole'
 import copy from 'copy-to-clipboard'
-import { createElement } from 'react'
-import { createRoot, type Root } from 'react-dom/client'
-import { ExportLogPage } from './components/export_log_page'
+import { renderExportLogPage } from './components/export_log_page'
 import { download } from './util/file'
-import type { VConsoleDefaultPluginCtx, LogItem } from './types/vconsole'
+import type {
+  VConsoleDefaultPluginCtx,
+  LogItem,
+  LogType,
+} from './types/vconsole'
 
 class VConsoleExportLogsPlugin {
   private vConsole: VConsoleDefaultPluginCtx
-  private root: Root | null = null
+  private container: HTMLElement | null = null
   private logList: LogItem[] = []
+  private selectedTypes: LogType[] = ['log', 'info', 'warn', 'error']
   private selectedTypesLogContent: string = ''
 
   constructor(vConsole: VConsole) {
@@ -29,7 +32,7 @@ class VConsoleExportLogsPlugin {
       callback(html)
       const container = document.getElementById(containerId)
       if (container) {
-        this.root = createRoot(container)
+        this.container = container
         this.renderExportLogPage()
       }
     })
@@ -66,18 +69,22 @@ class VConsoleExportLogsPlugin {
   }
 
   private renderExportLogPage = (): void => {
-    if (!this.root) {
+    if (!this.container) {
       return
     }
 
-    this.root.render(
-      createElement(ExportLogPage, {
-        logList: this.logList,
-        onSelectedTypesLogContentChange: (content: string) => {
-          this.selectedTypesLogContent = content
-        },
-      }),
-    )
+    renderExportLogPage({
+      container: this.container,
+      logList: this.logList,
+      selectedTypes: this.selectedTypes,
+      onSelectedTypesChange: (types: LogType[]) => {
+        this.selectedTypes = types
+        this.renderExportLogPage()
+      },
+      onSelectedTypesLogContentChange: (content: string) => {
+        this.selectedTypesLogContent = content
+      },
+    })
   }
 
   private updateLogList = (): void => {

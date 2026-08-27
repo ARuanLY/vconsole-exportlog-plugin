@@ -1,6 +1,6 @@
 {
   "name": "vconsole-exportlog-plugin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A vConsole plugin to copy logs and export log file.",
   "main": "dist/vconsole-exportlog-plugin.min.js",
   "module": "dist/vconsole-exportlog-plugin.es.js",
@@ -19,6 +19,12 @@
     "preview": "vite preview",
     "build:types": "tsc -p tsconfig.types.json"
   },
+  "files": [
+    "dist/*",
+    "README*",
+    "CHANGELOG*",
+    "LICENSE"
+  ],
   "keywords": [
     "vconsole",
     "plugin",
@@ -32,19 +38,18 @@
   "author": "ARuanLY <3205647203@qq.com>",
   "homepage": "https://github.com/ARuanLY/vconsole-exportlog-plugin",
   "license": "MIT",
-  "devDependencies": {
-    "@types/json-stringify-safe": "^5.0.3",
-    "@types/react": "^19.2.15",
-    "@types/react-dom": "^19.2.3",
-    "copy-to-clipboard": "^3.3.1",
-    "esbuild": "^0.28.0",
-    "json-stringify-safe": "^5.0.1",
-    "typescript": "^6.0.3",
-    "vconsole": "^3.15.1",
-    "vite": "^8.0.14"
+  "peerDependencies": {
+    "vconsole": "^3.15.1"
   },
   "dependencies": {
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "copy-to-clipboard": "^4.0.2",
+    "json-stringify-safe": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/json-stringify-safe": "^5.0.3",
+    "esbuild": "^0.28.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.14",
+    "vconsole": "^3.15.1"
   }
 }

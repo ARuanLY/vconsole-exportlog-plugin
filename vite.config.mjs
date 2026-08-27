@@ -20,7 +20,11 @@ export default defineConfig({
           : 'vconsole-exportlog-plugin.min.js',
     },
     rollupOptions: {
+      external: ['vconsole'],
       output: {
+        globals: {
+          vconsole: 'VConsole',
+        },
         postBanner: [
           '/*!',
           ` * ${pkg.name} v${pkg.version} (${pkg.homepage})`,
